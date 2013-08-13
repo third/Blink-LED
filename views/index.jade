@@ -1,0 +1,55 @@
+!!! 5
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Blink LED as you type
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='Third Santor')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js')
+    link(href='http://twitter.github.io/bootstrap/assets/css/bootstrap.css', rel='stylesheet')
+    link(href='http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css', rel='stylesheet')
+    link(rel='stylesheet', href='css/style.css')
+    //
+       HTML5 shim, for IE6-8 support of HTML5 elements 
+    //if lt IE 9
+      script(src='http://twitter.github.io/bootstrap/assets/js/html5shiv.js')
+  body
+    .container-narrow
+      .masthead
+        h3.muted Arduino Blinker
+      hr
+      .jumbotron
+        h1 Blink LED as you type
+        p.lead
+          
+        
+      
+        textarea(style='width: 600px;height:300px;font-size:48px;', placeholder='Start typing here...')
+        audio#soundFx(src='pop.wav', style='display: none;')
+    script(src='http://twitter.github.io/bootstrap/assets/js/jquery.js')
+    script().
+      function makeRequest(state) {
+        $.ajax(window.location.protocol + '//' + window.location.host + '/led/' + state, {
+          type: 'GET',
+          contentType: 'text/plain',
+          success: function(res) {},
+          error  : function(res) {}
+        });
+      }
+
+      var soundFx;
+
+      window.onload = function() {
+        soundFx = document.getElementById("soundFx");
+      }
+            
+      window.onkeydown = function() {
+        makeRequest('on');
+        soundFx.play();
+      }
+
+      window.onkeyup = function() {
+        makeRequest('off');
+        soundFx.stop();
+      }      
