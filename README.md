@@ -1,7 +1,7 @@
 LED Blinks while typing
 ---------------
 
-A quick project a created for Nodebots day.
+A quick project I created for Nodebots day.
 
 
 How it works
