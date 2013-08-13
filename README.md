@@ -1,8 +1,6 @@
 LED Blinks while typing
 ---------------
 
----
-
 A quick project a created for Nodebots day.
 
 
